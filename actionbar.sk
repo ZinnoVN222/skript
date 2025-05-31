@@ -1,0 +1,7 @@
+every 2 seconds:
+    loop all players:
+        set {_money} to "%loop-player's balance%" # Lấy tiền từ Vault qua Essentials/CMI
+        set {_rank} to "%loop-player's prefix%" # Lấy rank từ Vault (LuckPerms)
+        set {_level} to {level.%loop-player%} # Level do bạn tự làm
+
+        send action bar "&x&F&5&3&3&3&3&lC&x&F&6&4&E&3&1&lấ&x&F&7&6&9&2&F&lp &x&F&9&9&E&2&C&lĐ&x&F&A&B&9&2&A&lộ&f: %{_level}%   &x&f&f&d&7&0&0&lV&x&f&f&b&6&0&0&lN&x&f&f&9&6&0&0&lĐ&f: &f%{_money}%   &x&8&C&F&5&3&3&lR&x&6&6&F&8&6&8&la&x&4&1&F&C&9&C&ln&x&1&B&F&F&D&1&lk&f: %{_rank}%" to loop-player

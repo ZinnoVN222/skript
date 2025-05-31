@@ -1,0 +1,4 @@
+command /luukiem:
+    trigger:
+        set {item.sieukiem} to player's tool
+        send "&aĐã lưu kiếm tùy chỉnh từ tay bạn!"

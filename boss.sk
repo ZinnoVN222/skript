@@ -1,0 +1,85 @@
+command /summonboss:
+    trigger:
+        if name of player's tool is not "&dChìa Khoá Triệu Hồi":
+            send "&c❌ Bạn cần cầm &dChìa Khoá Triệu Hồi &cđể triệu hồi boss!"
+            stop
+
+        remove 1 of player's tool from player
+        broadcast "&6⚔ &e%player% &7đã triệu hồi BOSS tại &c%x-location of player%, %z-location of player%&7!"
+        spawn a wither at location of player
+        set name of last spawned entity to "&cBOSS Địa Ngục"
+        set metadata "boss" of last spawned entity to true
+
+command /givekey:
+    trigger:
+        give tripwire hook named "&dChìa Khoá Triệu Hồi" to player
+on damage of a wither:
+    attacker is a player
+    metadata "boss" of victim is true
+    set {_uuid} to uuid of victim
+    add damage to {boss::dame::%{_uuid}%::%name of attacker%}
+
+on death of a wither:
+    metadata "boss" of victim is true
+    clear drops
+    set {_boss} to uuid of victim
+    broadcast "&e[BOSS DEBUG] Boss chết. Đang xử lý sát thương..."
+    loop {boss::dame::%{_boss}%::*}:
+        set {_name} to loop-index
+        set {_dame} to loop-value
+        broadcast "&7- %{_name}% gây %{_dame}% sát thương"
+        if {_dame} >= 100:
+            execute console command "give %{_name}% diamond 1"
+            send "&a🎉 Bạn đã nhận được phần thưởng vì gây đủ sát thương vào boss!" to {_name}
+    delete {boss::dame::%{_boss}%::*}
+
+on place of obsidian:
+    if player's tool is set:
+        set {_name} to player's tool's display name
+        if {_name} is "§cObsidian Triệu Hồi":
+            if player is sneaking:
+                set {_loc} to event-location
+                set {_valid} to true
+
+                set {_x_offsets::*} to -1 and -1 and -1 and 0 and 0 and 1 and 1 and 1
+                set {_z_offsets::*} to -1 and 0 and 1 and -1 and 1 and -1 and 0 and 1
+
+                loop 8 times:
+                    set {_x} to {_x_offsets::%loop-number%}
+                    set {_z} to {_z_offsets::%loop-number%}
+                    set {_loc2} to location at (x-coordinate of {_loc} + {_x}), (y-coordinate of {_loc}), (z-coordinate of {_loc} + {_z})
+                    if block at {_loc2} is not diamond block:
+                        set {_valid} to false
+                        stop loop
+
+                if {_valid} is true:
+                    # Xóa vòng kim cương
+                    loop 8 times:
+                        set {_x} to {_x_offsets::%loop-number%}
+                        set {_z} to {_z_offsets::%loop-number%}
+                        set {_loc2} to location at (x-coordinate of {_loc} + {_x}), (y-coordinate of {_loc}), (z-coordinate of {_loc} + {_z})
+                        set block at {_loc2} to air
+
+                    # Xóa obsidian trung tâm
+                    set block at {_loc} to air
+
+                    # Triệu hồi Wither
+                    spawn wither at {_loc}
+
+                    send "&aBạn đã triệu hồi Boss Wither!" to player
+                    cancel event
+                else:
+                    send "&cBạn cần đặt Obsidian ở giữa vòng kim cương!" to player
+                    cancel event
+            else:
+                # Không cúi người thì KHÔNG cho đặt block
+                send "&eBạn phải cúi người (Shift) để thực hiện triệu hồi Wither!" to player
+                cancel event
+
+
+command /giveobsidian:
+    trigger:
+        set {_item} to obsidian named "§cObsidian Triệu Hồi"
+        give {_item} to player
+        send "&aBạn đã nhận được Obsidian Triệu Hồi!" to player
+

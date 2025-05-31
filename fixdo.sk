@@ -1,0 +1,14 @@
+command /fix:
+    trigger:
+        if player's tool is air:
+            send "&c❌ Không thể sửa đồ! &f(Hãy cầm món đồ bạn muốn sửa)" to player
+            stop
+        set {_cost} to 20000
+
+        if balance of player < {_cost}:
+            send "&c❌ Thiếu tiền! &f(Bạn cần &e20.000đ &fđể sửa đồ)" to player
+            stop
+
+        repair player's tool
+        remove {_cost} from balance of player
+        send "&a✔ Đã sửa thành công! &f(Bạn đã mất &e20.000đ&f)" to player

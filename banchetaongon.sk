@@ -1,0 +1,103 @@
+on load:
+    set {_item} to iron ingot named "&eThép Luyện Kim" with lore "", "&fNung chảy với &cnhiệt độ &fcao", "&fcho ra thành phẩm hoàn chỉnh", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&eThép Luyện Kim" using iron ingot, iron block, iron ingot, iron block, coal block, iron block, iron ingot, iron block, iron ingot with id "thepluyenkim"
+
+on load:
+    set {_item} to podzol named "&2Đất Ô Nhiễm" with lore "", "&fVùng đất &cnguy hiểm &fđã", "&flây lan rộng gây bệnh tật", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&2Đất Ô Nhiễm" using rotten flesh, rotten flesh, rotten flesh, rotten flesh, rotten flesh, rotten flesh, rotten flesh, rotten flesh, rotten flesh with id "datonhiem"
+
+on load:
+    set {_datonhiem} to podzol named "&2Đất Ô Nhiễm" with lore "", "&fVùng đất &cnguy hiểm &fđã", "&flây lan rộng gây bệnh tật", "", "&6&lITEM &f&lA4PNL"
+    set {_item} to brown_dye named "&9Bột Nguyền Rủa" with lore "", "&fNguồn gốc &5bí ẩn &fkhó", "&ftránh khỏi xui rủi bám lấy", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&9Bột Nguyền Rủa" using {_datonhiem}, {_datonhiem}, {_datonhiem}, {_datonhiem}, {_datonhiem}, {_datonhiem}, {_datonhiem}, {_datonhiem}, {_datonhiem} with id "botnguyenrua"
+
+
+on load:
+    set {_datonhiem} to podzol named "&2Đất Ô Nhiễm" with lore "", "&fVùng đất &cnguy hiểm &fđã", "&flây lan rộng gây bệnh tật", "", "&6&lITEM &f&lA4PNL"
+    set {_item} to oak log named "&1Gỗ Mục" with lore "", "&fLoại gỗ &1mục nát &ftại các", "&fcây chết lâu năm tháng", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&1Gỗ Mục" using oak log, gunpowder, oak log, bone, oak log, spider eye, oak log, {_datonhiem}, oak log with id "gomuc"
+
+
+on load:
+    set {_item} to crying obsidian named "&dChất Độc Huyết" with lore "", "&fMột dòng máu &dhuyết tố &fđã", "&fđược kết thành khối độc lớn", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&dChất Độc Huyết" using spider eye, spider eye, spider eye, spider eye, spider eye, spider eye, spider eye, spider eye, spider eye with id "chatdochuyet"
+
+ 
+on load:
+    set {_chatdochuyet} to crying obsidian named "&dChất Độc Huyết" with lore "", "&fMột dòng máu &dhuyết tố &fđã", "&fđược kết thành khối độc lớn", "", "&6&lITEM &f&lA4PNL"
+    set {_item} to arrow named "&3Nanh Độc" with lore "", "&fChiếc nanh &3độc tố &fsiêu", "&fsắc bén với hiệu ứng độc", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&3Nanh Độc" using {_chatdochuyet}, {_chatdochuyet}, {_chatdochuyet}, {_chatdochuyet}, arrow, {_chatdochuyet}, {_chatdochuyet}, {_chatdochuyet}, {_chatdochuyet} with id "nanhdoc"
+	
+on load:
+    set {_item} to oak log named "&eGỗ Ép Cứng" with lore "", "&fLoại gỗ được &eép chặt &fđể", "&fchế tạo ra chuôi kiếm", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&eGỗ Ép Cứng" using oak log, oak log, oak log, oak log, oak log, oak log, oak log, oak log, oak log with id "goepcung"
+
+on load:
+    set {_goepcung} to oak log named "&eGỗ Ép Cứng" with lore "", "&fLoại gỗ được &eép chặt &fđể", "&fchế tạo ra chuôi kiếm", "", "&6&lITEM &f&lA4PNL"
+    set {_item} to stick named "&6Chuôi &fKiếm" with lore "", "&fGỗ siêu bền để làm &echuôi cho kiếm", "&fáp dụng cho các loại kiếm", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&6Chuôi &fKiếm" using air, {_goepcung}, {_goepcung}, {_goepcung}, {_goepcung}, {_goepcung}, {_goepcung}, {_goepcung}, air with id "chuoikiem"
+
+on load:
+    set {_thepluyenkim} to iron ingot named "&eThép Luyện Kim" with lore "", "&fNung chảy với &cnhiệt độ &fcao", "&fcho ra thành phẩm hoàn chỉnh", "", "&6&lITEM &f&lA4PNL"
+    set {_botnguyenrua} to brown_dye named "&9Bột Nguyền Rủa" with lore "", "&fNguồn gốc &5bí ẩn &fkhó", "&ftránh khỏi xui rủi bám lấy", "", "&6&lITEM &f&lA4PNL"
+    set {_chatdochuyet} to crying obsidian named "&dChất Độc Huyết" with lore "", "&fMột dòng máu &dhuyết tố &fđã", "&fđược kết thành khối độc lớn", "", "&6&lITEM &f&lA4PNL"
+    set {_chuoikiem} to stick named "&6Chuôi &fKiếm" with lore "", "&fGỗ siêu bền để làm &echuôi cho kiếm", "&fáp dụng cho các loại kiếm", "", "&6&lITEM &f&lA4PNL"
+    set {_gomuc} to oak log named "&1Gỗ Mục" with lore "", "&fLoại gỗ &1mục nát &ftại các", "&fcây chết lâu năm tháng", "", "&6&lITEM &f&lA4PNL"
+    set {_nanhdoc} to arrow named "&3Nanh Độc" with lore "", "&fChiếc nanh &3độc tố &fsiêu", "&fsắc bén với hiệu ứng độc", "", "&6&lITEM &f&lA4PNL"
+    set {_item} to iron sword named "&2&lĐộc &f&lCô &2&lCầu &f&lBại &7[&6Cấp 1&7]" with lore "", "&c&lĐÂY LÀ ITEM MẪU", "&fNhấp để chế tạo sẽ", "&fgửi item &aHoàn Chỉnh", "&fđến tủ đồ ngay!", "", "&6&lITEM &f&lA4PNL"
+    register new shaped recipe for {_item} named "&2&lĐộc &f&lCô &2&lCầu &f&lBại &7[&6Cấp 1&7]" using {_thepluyenkim}, {_gomuc}, {_nanhdoc}, {_thepluyenkim}, netherite sword, {_chatdochuyet}, {_chuoikiem}, {_botnguyenrua}, {_chatdochuyet} with id "doccocaubai"
+
+on craft:
+    if name of event-item is "&2&lĐộc &f&lCô &2&lCầu &f&lBại &7[&6Cấp 1&7]":
+        cancel event
+
+        set {_inv} to player's open inventory
+
+        # Slot 1
+        set {_item} to item in slot 1 of {_inv}
+        if type of {_item} is iron ingot:
+            remove 1 of {_item} from slot 1 of {_inv}
+
+        # Slot 2
+        set {_item} to item in slot 2 of {_inv}
+        if type of {_item} is oak log:
+            remove 1 of {_item} from slot 2 of {_inv}
+
+        # Slot 3
+        set {_item} to item in slot 3 of {_inv}
+        if type of {_item} is arrow:
+            remove 1 of {_item} from slot 3 of {_inv}
+
+        # Slot 4
+        set {_item} to item in slot 4 of {_inv}
+        if type of {_item} is iron ingot:
+            remove 1 of {_item} from slot 4 of {_inv}
+
+        # Slot 5
+        set {_item} to item in slot 5 of {_inv}
+        if type of {_item} is netherite sword:
+            remove 1 of {_item} from slot 5 of {_inv}
+
+        # Slot 6
+        set {_item} to item in slot 6 of {_inv}
+        if type of {_item} is crying obsidian:
+            remove 1 of {_item} from slot 6 of {_inv}
+
+        # Slot 7
+        set {_item} to item in slot 7 of {_inv}
+        if type of {_item} is stick:
+            remove 1 of {_item} from slot 7 of {_inv}
+
+        # Slot 8
+        set {_item} to item in slot 8 of {_inv}
+        if type of {_item} is brown dye:
+            remove 1 of {_item} from slot 8 of {_inv}
+
+        # Slot 9
+        set {_item} to item in slot 9 of {_inv}
+        if type of {_item} is crying obsidian:
+            remove 1 of {_item} from slot 9 of {_inv}
+
+        close player's inventory
+        execute console command "si give 1 1 %player%"
+        send title "&6&lThành Công!" with subtitle "&aBạn đã chế tạo thành công!" to player for 2 seconds

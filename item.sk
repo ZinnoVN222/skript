@@ -1,0 +1,541 @@
+on script load:
+    set {sell_prices::brown_mushroom} to 100
+    set {buy_prices::brown_mushroom} to 143
+
+    set {sell_prices::red_mushroom} to 100
+    set {buy_prices::red_mushroom} to 143
+
+    set {sell_prices::wheat} to 100
+    set {buy_prices::wheat} to 143
+
+    set {sell_prices::cactus} to 100
+    set {buy_prices::cactus} to 143
+
+    set {sell_prices::carrot} to 100
+    set {buy_prices::carrot} to 143
+
+    set {sell_prices::beetroot} to 100
+    set {buy_prices::beetroot} to 143
+
+    set {sell_prices::pumpkin} to 100
+    set {buy_prices::pumpkin} to 143
+
+    set {sell_prices::melon_slice} to 100
+    set {buy_prices::melon_slice} to 143
+
+    set {sell_prices::sugar_cane} to 100
+    set {buy_prices::sugar_cane} to 143
+
+    set {sell_prices::wheat_seeds} to 40
+    set {buy_prices::wheat_seeds} to 57
+
+    set {sell_prices::beetroot_seeds} to 40
+    set {buy_prices::beetroot_seeds} to 57
+
+    set {sell_prices::melon_seeds} to 40
+    set {buy_prices::melon_seeds} to 57
+
+    set {sell_prices::nether_wart} to 100
+    set {buy_prices::nether_wart} to 143
+
+    set {sell_prices::cocoa_beans} to 100
+    set {buy_prices::cocoa_beans} to 143
+
+    set {sell_prices::pumpkin_seeds} to 40
+    set {buy_prices::pumpkin_seeds} to 57
+
+    set {sell_prices::coal} to 200
+    set {buy_prices::coal} to 286
+
+    set {sell_prices::redstone} to 220
+    set {buy_prices::redstone} to 315
+
+    set {sell_prices::lapis_lazuli} to 300
+    set {buy_prices::lapis_lazuli} to 429
+
+    set {sell_prices::diamond} to 2800
+    set {buy_prices::diamond} to 4000
+
+    set {sell_prices::emerald} to 2100
+    set {buy_prices::emerald} to 3000
+
+    set {sell_prices::gold_ingot} to 600
+    set {buy_prices::gold_ingot} to 857
+
+    set {sell_prices::iron_ingot} to 400
+    set {buy_prices::iron_ingot} to 571
+
+    set {sell_prices::copper_ingot} to 200
+    set {buy_prices::copper_ingot} to 286
+
+    set {sell_prices::netherite_ingot} to 175000
+    set {buy_prices::netherite_ingot} to 250000
+
+    set {sell_prices::netherite_scrap} to 40000
+    set {buy_prices::netherite_scrap} to 57143
+
+    set {sell_prices::quartz} to 220
+    set {buy_prices::quartz} to 315
+
+    set {sell_prices::amethyst_shard} to 220
+    set {buy_prices::amethyst_shard} to 315
+
+    set {sell_prices::hopper} to 650
+    set {buy_prices::hopper} to 929
+
+    set {sell_prices::piston} to 250
+    set {buy_prices::piston} to 357
+
+    set {sell_prices::moss_block} to 80
+    set {buy_prices::moss_block} to 114
+
+    set {sell_prices::stone} to 30
+    set {buy_prices::stone} to 43
+
+    set {sell_prices::diorite} to 30
+    set {buy_prices::diorite} to 43
+
+    set {sell_prices::grass_block} to 120
+    set {buy_prices::grass_block} to 171
+
+    set {sell_prices::coarse_dirt} to 50
+    set {buy_prices::coarse_dirt} to 71
+
+    set {sell_prices::dirt} to 40
+    set {buy_prices::dirt} to 57
+
+    set {sell_prices::podzol} to 120
+    set {buy_prices::podzol} to 171
+
+    set {sell_prices::cobblestone} to 30
+    set {buy_prices::cobblestone} to 43
+
+    set {sell_prices::mossy_cobblestone} to 60
+    set {buy_prices::mossy_cobblestone} to 86
+
+    set {sell_prices::andesite} to 30
+    set {buy_prices::andesite} to 43
+
+    set {sell_prices::granite} to 30
+    set {buy_prices::granite} to 43
+
+    set {sell_prices::clay} to 90
+    set {buy_prices::clay} to 129
+
+    set {sell_prices::sand} to 40
+    set {buy_prices::sand} to 57
+
+    set {sell_prices::red_sand} to 50
+    set {buy_prices::red_sand} to 71
+
+    set {sell_prices::gravel} to 40
+    set {buy_prices::gravel} to 57
+
+    set {sell_prices::mycelium} to 120
+    set {buy_prices::mycelium} to 171
+
+    set {sell_prices::oak_planks} to 40
+    set {buy_prices::oak_planks} to 57
+
+    set {sell_prices::spruce_planks} to 40
+    set {buy_prices::spruce_planks} to 57
+
+    set {sell_prices::birch_planks} to 40
+    set {buy_prices::birch_planks} to 57
+
+    set {sell_prices::jungle_planks} to 40
+    set {buy_prices::jungle_planks} to 57
+
+    set {sell_prices::acacia_planks} to 40
+    set {buy_prices::acacia_planks} to 57
+
+    set {sell_prices::dark_oak_planks} to 40
+    set {buy_prices::dark_oak_planks} to 57
+
+    set {sell_prices::mangrove_planks} to 40
+    set {buy_prices::mangrove_planks} to 57
+
+    set {sell_prices::cherry_planks} to 40
+    set {buy_prices::cherry_planks} to 57
+
+    set {sell_prices::pale_oak_planks} to 40
+    set {buy_prices::pale_oak_planks} to 57
+
+    set {sell_prices::oak_sapling} to 30
+    set {buy_prices::oak_sapling} to 43
+
+    set {sell_prices::spruce_sapling} to 30
+    set {buy_prices::spruce_sapling} to 43
+
+    set {sell_prices::birch_sapling} to 30
+    set {buy_prices::birch_sapling} to 43
+
+    set {sell_prices::jungle_sapling} to 30
+    set {buy_prices::jungle_sapling} to 43
+
+    set {sell_prices::acacia_sapling} to 30
+    set {buy_prices::acacia_sapling} to 43
+
+    set {sell_prices::dark_oak_sapling} to 30
+    set {buy_prices::dark_oak_sapling} to 43
+
+    set {sell_prices::mangrove_propagule} to 30
+    set {buy_prices::mangrove_propagule} to 43
+
+    set {sell_prices::cherry_sapling} to 30
+    set {buy_prices::cherry_sapling} to 43
+
+    set {sell_prices::pale_oak_sapling} to 30
+    set {buy_prices::pale_oak_sapling} to 43
+
+    set {sell_prices::oak_log} to 150
+    set {buy_prices::oak_log} to 214
+
+    set {sell_prices::spruce_log} to 150
+    set {buy_prices::spruce_log} to 214
+
+    set {sell_prices::birch_log} to 150
+    set {buy_prices::birch_log} to 214
+
+    set {sell_prices::jungle_log} to 150
+    set {buy_prices::jungle_log} to 214
+
+    set {sell_prices::acacia_log} to 150
+    set {buy_prices::acacia_log} to 214
+
+    set {sell_prices::dark_oak_log} to 150
+    set {buy_prices::dark_oak_log} to 214
+
+    set {sell_prices::mangrove_log} to 150
+    set {buy_prices::mangrove_log} to 214
+
+    set {sell_prices::cherry_log} to 150
+    set {buy_prices::cherry_log} to 214
+
+    set {sell_prices::pale_oak_log} to 150
+    set {buy_prices::pale_oak_log} to 214
+
+    set {sell_prices::oak_leaves} to 10
+    set {buy_prices::oak_leaves} to 14
+
+    set {sell_prices::spruce_leaves} to 10
+    set {buy_prices::spruce_leaves} to 14
+
+    set {sell_prices::birch_leaves} to 10
+    set {buy_prices::birch_leaves} to 14
+
+    set {sell_prices::jungle_leaves} to 10
+    set {buy_prices::jungle_leaves} to 14
+
+    set {sell_prices::acacia_leaves} to 10
+    set {buy_prices::acacia_leaves} to 14
+
+    set {sell_prices::dark_oak_leaves} to 10
+    set {buy_prices::dark_oak_leaves} to 14
+
+    set {sell_prices::mangrove_leaves} to 10
+    set {buy_prices::mangrove_leaves} to 14
+
+    set {sell_prices::cherry_leaves} to 10
+    set {buy_prices::cherry_leaves} to 14
+
+    set {sell_prices::pale_oak_leaves} to 10
+    set {buy_prices::pale_oak_leaves} to 14
+
+    set {sell_prices::bricks} to 120
+    set {buy_prices::bricks} to 172
+
+    set {sell_prices::bookshelf} to 200
+    set {buy_prices::bookshelf} to 286
+
+    set {sell_prices::stone_bricks} to 12
+    set {buy_prices::stone_bricks} to 17
+
+    set {sell_prices::obsidian} to 250
+    set {buy_prices::obsidian} to 358
+
+    set {sell_prices::lava_block} to 40
+    set {buy_prices::lava_block} to 57
+
+    set {sell_prices::netherrack} to 15
+    set {buy_prices::netherrack} to 22
+
+    set {sell_prices::quartz_block} to 150
+    set {buy_prices::quartz_block} to 214
+
+    set {sell_prices::ice} to 20
+    set {buy_prices::ice} to 29
+
+    set {sell_prices::soul_sand} to 20
+    set {buy_prices::soul_sand} to 29
+
+    set {sell_prices::rotten_flesh} to 12
+    set {buy_prices::rotten_flesh} to 17
+
+    set {sell_prices::bone} to 18
+    set {buy_prices::bone} to 26
+
+    set {sell_prices::string} to 16
+    set {buy_prices::string} to 23
+
+    set {sell_prices::spider_eye} to 22
+    set {buy_prices::spider_eye} to 32
+
+    set {sell_prices::gunpowder} to 35
+    set {buy_prices::gunpowder} to 50
+
+    set {sell_prices::arrow} to 18
+    set {buy_prices::arrow} to 26
+
+    set {sell_prices::ender_pearl} to 150
+    set {buy_prices::ender_pearl} to 215
+
+    set {sell_prices::blaze_rod} to 120
+    set {buy_prices::blaze_rod} to 172
+
+    set {sell_prices::breeze_rod} to 120
+    set {buy_prices::breeze_rod} to 172
+
+    set {sell_prices::ghast_tear} to 300
+    set {buy_prices::ghast_tear} to 429
+
+    set {sell_prices::slime_ball} to 80
+    set {buy_prices::slime_ball} to 115
+
+    set {sell_prices::magma_cream} to 80
+    set {buy_prices::magma_cream} to 115
+
+    set {sell_prices::phantom_membrane} to 100
+    set {buy_prices::phantom_membrane} to 143
+
+    set {sell_prices::shulker_shell} to 600
+    set {buy_prices::shulker_shell} to 858
+
+    set {sell_prices::rabbit_foot} to 100
+    set {buy_prices::rabbit_foot} to 143
+
+    set {sell_prices::prismarine_shard} to 60
+    set {buy_prices::prismarine_shard} to 86
+
+    set {sell_prices::prismarine_crystals} to 80
+    set {buy_prices::prismarine_crystals} to 115
+
+    set {sell_prices::wither_skeleton_skull} to 2500
+    set {buy_prices::wither_skeleton_skull} to 3572
+
+    set {sell_prices::nether_star} to 10000
+    set {buy_prices::nether_star} to 14285
+
+    set {sell_prices::dragon_breath} to 700
+    set {buy_prices::dragon_breath} to 1000
+
+    set {sell_prices::elytra} to 15000
+    set {buy_prices::elytra} to 21429
+
+    set {sell_prices::leather} to 30
+    set {buy_prices::leather} to 43
+
+    set {sell_prices::feather} to 15
+    set {buy_prices::feather} to 22
+
+    set {sell_prices::egg} to 12
+    set {buy_prices::egg} to 17
+
+    set {sell_prices::potato} to 100
+    set {buy_prices::potato} to 143
+
+    set {sell_prices::porkchop} to 24
+    set {buy_prices::porkchop} to 35
+
+    set {sell_prices::beef} to 28
+    set {buy_prices::beef} to 40
+
+    set {sell_prices::chicken} to 18
+    set {buy_prices::chicken} to 26
+
+    set {sell_prices::mutton} to 18
+    set {buy_prices::mutton} to 26
+
+    set {sell_prices::rabbit} to 25
+    set {buy_prices::rabbit} to 36
+
+    set {sell_prices::honeycomb} to 80
+    set {buy_prices::honeycomb} to 115
+
+    set {sell_prices::honey_bottle} to 80
+    set {buy_prices::honey_bottle} to 115
+
+    set {sell_prices::ink_sac} to 20
+    set {buy_prices::ink_sac} to 29
+
+    set {sell_prices::glow_ink_sac} to 35
+    set {buy_prices::glow_ink_sac} to 50
+
+    set {sell_prices::turtle_scute} to 150
+    set {buy_prices::turtle_scute} to 215
+
+    set {sell_prices::nautilus_shell} to 120
+    set {buy_prices::nautilus_shell} to 172
+
+    set {sell_prices::fish_cod} to 15
+    set {buy_prices::fish_cod} to 22
+
+    set {sell_prices::salmon} to 18
+    set {buy_prices::salmon} to 26
+
+    set {sell_prices::tropical_fish} to 25
+    set {buy_prices::tropical_fish} to 36
+
+    set {sell_prices::pufferfish} to 35
+    set {buy_prices::pufferfish} to 50
+
+    set {sell_prices::rabbit_hide} to 25
+    set {buy_prices::rabbit_hide} to 36
+
+    set {sell_prices::milk_bucket} to 25
+    set {buy_prices::milk_bucket} to 36
+
+    set {sell_prices::saddle} to 200
+    set {buy_prices::saddle} to 286
+
+    set {sell_prices::name_tag} to 300
+    set {buy_prices::name_tag} to 429
+
+    set {sell_prices::totem_of_undying} to 1400
+    set {buy_prices::totem_of_undying} to 2000
+
+    # Wool, Concrete, Stained Glass (từ bảng sell_prices & buy_prices bạn gửi)
+    set {sell_prices::white_wool} to 40
+    set {buy_prices::white_wool} to 57
+    set {sell_prices::orange_wool} to 40
+    set {buy_prices::orange_wool} to 57
+    set {sell_prices::magenta_wool} to 40
+    set {buy_prices::magenta_wool} to 57
+    set {sell_prices::light_blue_wool} to 40
+    set {buy_prices::light_blue_wool} to 57
+    set {sell_prices::yellow_wool} to 40
+    set {buy_prices::yellow_wool} to 57
+    set {sell_prices::lime_wool} to 40
+    set {buy_prices::lime_wool} to 57
+    set {sell_prices::pink_wool} to 40
+    set {buy_prices::pink_wool} to 57
+    set {sell_prices::gray_wool} to 40
+    set {buy_prices::gray_wool} to 57
+    set {sell_prices::light_gray_wool} to 40
+    set {buy_prices::light_gray_wool} to 57
+    set {sell_prices::cyan_wool} to 40
+    set {buy_prices::cyan_wool} to 57
+    set {sell_prices::purple_wool} to 40
+    set {buy_prices::purple_wool} to 57
+    set {sell_prices::blue_wool} to 40
+    set {buy_prices::blue_wool} to 57
+    set {sell_prices::brown_wool} to 40
+    set {buy_prices::brown_wool} to 57
+    set {sell_prices::green_wool} to 40
+    set {buy_prices::green_wool} to 57
+    set {sell_prices::red_wool} to 40
+    set {buy_prices::red_wool} to 57
+    set {sell_prices::black_wool} to 40
+    set {buy_prices::black_wool} to 57
+
+    set {sell_prices::white_concrete} to 40
+    set {buy_prices::white_concrete} to 57
+    set {sell_prices::orange_concrete} to 40
+    set {buy_prices::orange_concrete} to 57
+    set {sell_prices::magenta_concrete} to 40
+    set {buy_prices::magenta_concrete} to 57
+    set {sell_prices::light_blue_concrete} to 40
+    set {buy_prices::light_blue_concrete} to 57
+    set {sell_prices::yellow_concrete} to 40
+    set {buy_prices::yellow_concrete} to 57
+    set {sell_prices::lime_concrete} to 40
+    set {buy_prices::lime_concrete} to 57
+    set {sell_prices::pink_concrete} to 40
+    set {buy_prices::pink_concrete} to 57
+    set {sell_prices::gray_concrete} to 40
+    set {buy_prices::gray_concrete} to 57
+    set {sell_prices::light_gray_concrete} to 40
+    set {buy_prices::light_gray_concrete} to 57
+    set {sell_prices::cyan_concrete} to 40
+    set {buy_prices::cyan_concrete} to 57
+    set {sell_prices::purple_concrete} to 40
+    set {buy_prices::purple_concrete} to 57
+    set {sell_prices::blue_concrete} to 40
+    set {buy_prices::blue_concrete} to 57
+    set {sell_prices::brown_concrete} to 40
+    set {buy_prices::brown_concrete} to 57
+    set {sell_prices::green_concrete} to 40
+    set {buy_prices::green_concrete} to 57
+    set {sell_prices::red_concrete} to 40
+    set {buy_prices::red_concrete} to 57
+    set {sell_prices::black_concrete} to 40
+    set {buy_prices::black_concrete} to 57
+
+    set {sell_prices::white_stained_glass} to 40
+    set {buy_prices::white_stained_glass} to 57
+    set {sell_prices::orange_stained_glass} to 40
+    set {buy_prices::orange_stained_glass} to 57
+    set {sell_prices::magenta_stained_glass} to 40
+    set {buy_prices::magenta_stained_glass} to 57
+    set {sell_prices::light_blue_stained_glass} to 40
+    set {buy_prices::light_blue_stained_glass} to 57
+    set {sell_prices::yellow_stained_glass} to 40
+    set {buy_prices::yellow_stained_glass} to 57
+    set {sell_prices::lime_stained_glass} to 40
+    set {buy_prices::lime_stained_glass} to 57
+    set {sell_prices::pink_stained_glass} to 40
+    set {buy_prices::pink_stained_glass} to 57
+    set {sell_prices::black_stained_glass} to 40
+    set {buy_prices::black_stained_glass} to 57
+    set {sell_prices::light_gray_stained_glass} to 40
+    set {buy_prices::light_gray_stained_glass} to 57
+    set {sell_prices::cyan_stained_glass} to 40
+    set {buy_prices::cyan_stained_glass} to 57
+    set {sell_prices::purple_stained_glass} to 40
+    set {buy_prices::purple_stained_glass} to 57
+    set {sell_prices::blue_stained_glass} to 40
+    set {buy_prices::blue_stained_glass} to 57
+    set {sell_prices::red_stained_glass} to 40
+    set {buy_prices::red_stained_glass} to 57
+	
+    set {sell_prices::terracotta} to 60
+    set {buy_prices::terracotta} to 86
+    set {sell_prices::white_terracotta} to 60
+    set {sell_prices::orange_terracotta} to 60
+    set {sell_prices::magenta_terracotta} to 60
+    set {sell_prices::light_blue_terracotta} to 60
+    set {sell_prices::yellow_terracotta} to 60
+    set {sell_prices::lime_terracotta} to 60
+    set {sell_prices::pink_terracotta} to 60
+    set {sell_prices::gray_terracotta} to 60
+    set {sell_prices::light_gray_terracotta} to 60
+    set {sell_prices::cyan_terracotta} to 60
+    set {sell_prices::purple_terracotta} to 60
+    set {sell_prices::blue_terracotta} to 60
+    set {sell_prices::brown_terracotta} to 60
+    set {sell_prices::green_terracotta} to 60
+    set {sell_prices::red_terracotta} to 60
+    set {sell_prices::black_terracotta} to 60
+
+    set {buy_prices::white_terracotta} to 86
+    set {buy_prices::orange_terracotta} to 86
+    set {buy_prices::magenta_terracotta} to 86
+    set {buy_prices::light_blue_terracotta} to 86
+    set {buy_prices::yellow_terracotta} to 86
+    set {buy_prices::lime_terracotta} to 86
+    set {buy_prices::pink_terracotta} to 86
+    set {buy_prices::gray_terracotta} to 86
+    set {buy_prices::light_gray_terracotta} to 86
+    set {buy_prices::cyan_terracotta} to 86
+    set {buy_prices::purple_terracotta} to 86
+    set {buy_prices::blue_terracotta} to 86
+    set {buy_prices::brown_terracotta} to 86
+    set {buy_prices::green_terracotta} to 86
+    set {buy_prices::red_terracotta} to 86
+    set {buy_prices::black_terracotta} to 86
+	
+    set {sell_prices::heart_of_the_sea} to 300
+    set {buy_prices::heart_of_the_sea} to 430
+	
+    set {sell_prices::trident} to 1600
+    set {buy_prices::trident} to 2300

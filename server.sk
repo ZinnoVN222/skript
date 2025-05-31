@@ -1,0 +1,348 @@
+on join:
+    wait 5 ticks
+    if player has permission "group.trumcuoi":
+        set max health of player to 20
+    else if player has permission "group.boday":
+        set max health of player to 18
+    else if player has permission "group.thulinh":
+        set max health of player to 16
+    else if player has permission "group.boypho":
+        set max health of player to 13
+    else if player has permission "group.danchoi":
+        set max health of player to 11
+    else:
+        set max health of player to 10
+
+every 1 seconds:
+    loop all players:
+        if loop-player has permission "group.trumcuoi":
+            set max health of loop-player to 20
+        else if loop-player has permission "group.boday":
+            set max health of loop-player to 18
+        else if loop-player has permission "group.thulinh":
+            set max health of loop-player to 16
+        else if loop-player has permission "group.boypho":
+            set max health of loop-player to 13
+        else if loop-player has permission "group.danchoi":
+            set max health of loop-player to 11
+        else:
+            set max health of loop-player to 10
+
+command /off:
+    permission: skript.stopluon
+    trigger:
+        loop 10 times:
+            set {_i} to 11 - loop-number
+            broadcast "§7[§6Thông Báo§7] §cServer sẽ dừng trong §e%{_i}% §cgiây!"
+            wait 1 second
+        broadcast "§7[§6Thông Báo§7] §c§lServer đang dừng ngay bây giờ!"
+        stop server
+		
+command /tatsv <number>:
+    permission: skript.stop
+    trigger:
+        set {_total} to arg 1 * 3600  # Tổng giây
+        set {_remaining} to {_total}
+        broadcast "§7[§6Thông Báo§7] §cServer sẽ dừng trong §e%arg 1% §ctiếng!"
+
+        # Cứ sau mỗi 30 phút thì thông báo
+        while {_remaining} > 600:  # Lặp cho đến còn dưới 10 phút
+            wait 1800 seconds  # Chờ 30 phút
+            subtract 1800 from {_remaining}
+            set {_h} to floor({_remaining} / 3600)
+            set {_m} to floor(({_remaining} - ({_h} * 3600)) / 60)
+            if {_h} > 0:
+                broadcast "§7[§6Thông Báo§7] §cServer sẽ dừng trong §e%{_h}% tiếng %{_m}% phút§c!"
+            else:
+                broadcast "§7[§6Thông Báo§7] §cServer sẽ dừng trong §e%{_m}% phút§c!"
+
+        # Báo còn 10 phút
+        wait {_remaining} - 10 seconds
+        broadcast "§7[§6Thông Báo§7] §cServer sẽ dừng trong §e10 giây§c!"
+
+        # Đếm ngược 10 giây
+        loop 10 times:
+            set {_i} to 11 - loop-number
+            broadcast "§7[§6Thông Báo§7] §cServer sẽ dừng trong §e%{_i}% §cgiây!"
+            wait 1 second
+
+        broadcast "§7[§6Thông Báo§7] §c§lServer đang dừng ngay bây giờ!"
+        stop server
+
+
+command /tb <text>:
+    permission: skript.tb
+    trigger:
+        broadcast "§7[§6Thông Báo§7] §f%arg-1%"
+		
+command /ad <text>:
+    permission: skript.ad
+    trigger:
+        broadcast "§e§k|i| §x§f§4§2§0§2§0§lA§x§f§6§3§0§3§0§lD§x§f§c§c§c§c§c§lM§x§f§e§e§e§e§e§lI§x§f§f§f§f§f§f§lN §e§k|i| §f%arg-1%"
+
+command /muarank [<text>]:
+    trigger:
+        if arg-1 is not set:
+            send title "&cLỖI!" with subtitle "&fBạn phải nhập tên rank để mua!" to player for 5 seconds
+            stop
+
+        set {_rank} to arg-1
+        set {_cost} to 0
+        set {_rank_display} to ""
+        set {_ranks::*} to "danchoi", "boypho", "thulinh", "boday", "trumcuoi"
+
+        # Gán giá và tên màu cho từng rank
+        if "%{_rank}%" is "danchoi":
+            set {_cost} to 20000000
+            set {_rank_display} to "§7[§fDân §6Chơi§7]"
+        else if "%{_rank}%" is "boypho":
+            set {_cost} to 80000000
+            set {_rank_display} to "§7[§fBoy §cPhố§7]"
+        else if "%{_rank}%" is "thulinh":
+            set {_cost} to 200000000
+            set {_rank_display} to "§7[§fThủ §3Lĩnh§7]"
+        else if "%{_rank}%" is "boday":
+            set {_cost} to 410000000
+            set {_rank_display} to "§f§k;; §x§2§0§9§C§F§F§lB§x§2§E§A§A§F§5§lố §x§4§B§C§5§E§2§lĐ§x§5§A§D§2§D§9§lâ§x§6§8§E§0§C§F§ly §f§k;;"
+        else if "%{_rank}%" is "trumcuoi":
+            set {_cost} to 660000000
+            set {_rank_display} to "§f§l§k|§c§k| §x§E§F§B§F§3§D§lT§x§E§D§A§7§4§1§lr§x§E§B§8§E§4§6§lù§x§E§9§7§6§4§A§lm §x§E§D§5§8§5§A§lC§x§F§3§5§3§6§6§lu§x§F§9§4§E§7§2§lố§x§F§F§4§9§7§E§li §6§k|§f§l§k|"
+        else:
+            send title "&cRANK KHÔNG TỒN TẠI!" with subtitle "&fdùng lệnh &e/pcrank &fđể mua" to player for 5 seconds
+            stop
+
+        # Xác định rank hiện tại của player (nếu chưa có thì mặc định là 0)
+        set {_currentRank} to ""
+        set {_currentIndex} to 0
+        loop {_ranks::*}:
+            if player has permission "group.%loop-value%":
+                set {_currentRank} to "%loop-value%"
+        if {_currentRank} is not "":
+            loop {_ranks::*}:
+                add 1 to {_i}
+                if "%loop-value%" is "%{_currentRank}%":
+                    set {_currentIndex} to {_i}
+        # Xác định index của rank muốn mua
+        set {_targetIndex} to 0
+        loop {_ranks::*}:
+            add 1 to {_j}
+            if "%loop-value%" is "%{_rank}%":
+                set {_targetIndex} to {_j}
+
+        # Chỉ cho phép mua rank kế tiếp
+        if {_targetIndex} - {_currentIndex} != 1:
+            send title "&cKHÔNG THỂ MUA NHẢY!" with subtitle "&fBạn chỉ có thể mua rank kế tiếp!" to player for 5 seconds
+            stop
+
+        if balance of player < {_cost}:
+            send title "&cKHÔNG ĐỦ TIỀN!" with subtitle "&fCần %{_cost}%đ để mua rank này" to player for 5 seconds
+            stop
+
+        remove {_cost} from balance of player
+        execute console command "lp user %player% parent set %{_rank}%"
+        execute console command "chatex reload"
+        send title "&aMUA RANK THÀNH CÔNG!" with subtitle "&c-%{_cost}%đ &fvào tài khoản!" to player for 5 seconds
+        send "&a✔ Bạn đã mua thành công rank %{_rank_display}% &avới giá &c%{_cost}%đ!"
+        broadcast "§7[§6Thông Báo§7] §fđại gia §c§l%player% §fđã bỏ ra §e%{_cost}%đ §fđể mua rank %{_rank_display}%"
+
+options:
+  cooldown-seconds: 7200
+
+# Biến đếm thời gian mỗi người
+every 1 second:
+  loop all players:
+    if {freemeattime.%loop-player%} is set:
+      add 1 to {freemeattime.%loop-player%}
+
+command /thitbo:
+  permission: group.danchoi
+  trigger:
+    if {freemeattime.%player%} is not set:
+      # Lần đầu nhận
+      give player 5 cooked_beef
+      send "&aBạn đã nhận được 5 thịt bò miễn phí!"
+      set {freemeattime.%player%} to 0
+      stop
+    if {freemeattime.%player%} < {@cooldown-seconds}:
+      set {_remain} to {@cooldown-seconds} - {freemeattime.%player%}
+      set {_min} to floor({_remain} / 60)
+      set {_sec} to {_remain} - ({_min} * 60)
+      send "&cBạn đã nhận thịt rồi! Vui lòng đợi &6%{_min}% phút &6%{_sec}% giây &cđể nhận tiếp."
+      stop
+    # Đủ thời gian rồi
+    give player 5 cooked_beef
+    send "&aBạn đã nhận được 5 thịt bò miễn phí!"
+    set {freemeattime.%player%} to 0
+
+command /craft:
+    permission: group.thulinh
+    permission message: §e§k|i| §x§f§4§2§0§2§0§lA§x§f§6§3§0§3§0§lD§x§f§c§c§c§c§c§lM§x§f§e§e§e§e§e§lI§x§f§f§f§f§f§f§lN §e§k|i| &fMua rank §7[§fThủ §3Lĩnh§7] &ftrở lên để dùng được lệnh này!
+    trigger:
+        open crafting table for player
+
+command /feed:
+    trigger:
+        # Xác định cooldown theo group
+        if player has permission "group.trumcuoi":
+            set {_cooldown} to 20 minutes
+        else if player has permission "group.boday":
+            set {_cooldown} to 40 minutes
+        else:
+            send "&cBạn không có quyền dùng lệnh này."
+            stop
+
+        # Kiểm tra cooldown
+        if {feed.cooldown.%uuid of player%} is not set:
+            set {feed.cooldown.%uuid of player%} to now - 1 hour
+
+        set {_lastUsed} to {feed.cooldown.%uuid of player%}
+        set {_now} to now
+
+        if difference between {_now} and {_lastUsed} < {_cooldown}:
+            set {_remain} to {_cooldown} - (difference between {_now} and {_lastUsed})
+            set {_minutes} to ceil({_remain} / 60 seconds)
+            send "§e§k|i| §x§f§4§2§0§2§0§lA§x§f§6§3§0§3§0§lD§x§f§c§c§c§c§c§lM§x§f§e§e§e§e§e§lI§x§f§f§f§f§f§f§lN §e§k|i| &fBạn cần chờ thêm &c%{_minutes}% phút"
+            stop
+
+        # Hồi thức ăn
+        set player's food level to 20
+        set player's saturation to 20
+        send "§e§k|i| §x§f§4§2§0§2§0§lA§x§f§6§3§0§3§0§lD§x§f§c§c§c§c§c§lM§x§f§e§e§e§e§e§lI§x§f§f§f§f§f§f§lN §e§k|i| &fĐã hồi đầy thức ăn!" to player
+        set {feed.cooldown.%uuid of player%} to now
+
+command /xemslot <text> <number>:
+    permission: admin.boxmm
+    trigger:
+        set {_box} to argument 1
+        set {_slot} to argument 2
+
+        send "&7Slot %{_slot}% của hộp %{_box}%:"
+        send "- Item: %{vp.%{_box}%::%{_slot}%::item}%"
+        send "- Tỉ lệ: %{vp.%{_box}%::%{_slot}%::chance}%"
+command /boxadd <text> <number> <number>:
+    permission: admin.boxsetting
+    trigger:
+        set {_box} to argument 1
+        set {_slot} to argument 2
+        set {_chance} to argument 3
+
+        if player's tool is air:
+            send "&cBạn không cầm vật phẩm nào trên tay!"
+            stop
+
+        # Lưu item (đơn giản, không clone)
+        set {vp.%{_box}%::%{_slot}%::item} to player's tool
+        set {vp.%{_box}%::%{_slot}%::chance} to {_chance}
+
+        send "&a✔ Đã lưu vật phẩm vào hộp &b%{_box}% &a- slot &e%{_slot}% &avới tỉ lệ &e%{_chance}%"
+
+command /muahop <text>:
+    trigger:
+        set {_box} to argument 1
+        # Đặt tên hiển thị cho từng loại hộp
+        if {_box} = "lo":
+            set {_perm} to "group.danchoi"
+            set {_cost} to 50000
+            set {_box_name} to "&7[&fLỏ&7]"
+        else if {_box} = "coban":
+            set {_perm} to "group.boypho"
+            set {_cost} to 300000
+            set {_box_name} to "&7[&aCơ Bản&7]"
+        else if {_box} = "vip":
+            set {_perm} to "group.thulinh"
+            set {_cost} to 500000
+            set {_box_name} to "&7[&6VIP&7]"
+        else if {_box} = "legend":
+            set {_perm} to "group.boday"
+            set {_cost} to 800000
+            set {_box_name} to "&7[&3Legend&7]"
+        else if {_box} = "mythic":
+            set {_perm} to "group.trumcuoi"
+            set {_cost} to 1000000
+            set {_box_name} to "&7[&dMythic&7]"
+        else:
+            send "&c❌ Hộp không hợp lệ! Dùng: lo, coban, vip, legend, mythic"
+            stop
+
+        if player does not have permission {_perm}:
+            send "&c❌ Bạn không có quyền mua hộp %{_box_name}%&c!"
+            stop
+
+        if player's balance < {_cost}:
+            send "&c❌ Bạn không đủ tiền để mua hộp %{_box_name}%&c! Cần &e%{_cost}%đ"
+            stop
+
+        execute console command "eco take %player% %{_cost}%"
+        send "&a💰 Đã trừ &e%{_cost}%đ&a. Mở hộp %{_box_name}%..."
+
+        send "&7Đang tìm phần thưởng..."
+        wait 20 ticks
+
+        set {_got} to false
+
+        loop 8 times:
+            set {_index} to loop-number
+            set {_item} to {vp.%{_box}%::%{_index}%::item}
+            set {_chance} to {vp.%{_box}%::%{_index}%::chance}
+            if {_item} is set:
+                set {_roll} to random integer between 1 and 100
+                if {_roll} <= {_chance}:
+                    give {_item} to player
+                    # Hiệu ứng nhấp nháy tên hộp dùng tên hiển thị
+                    loop 8 times:
+                        send title "&cMở Hộp %{_box_name}%" with subtitle "&f🎉 Đang chọn phần thưởng..." to player
+                        wait 5 ticks
+                        send title "&fMở Hộp %{_box_name}%" with subtitle "&d🎉 Đang chọn phần thưởng..." to player
+                        wait 5 ticks
+
+                    # Lấy tên item để thông báo
+					
+                    set {_item_name} to "%{_item}%"
+
+                    broadcast "§7[§6Thông Báo§7] §a§l%player% §fdùng §e%{_cost}%đ §fmua hộp %{_box_name}% §fnhận được §a%{_item_name}%"
+                    set {_got} to true
+                    stop
+
+        if {_got} is false:
+            send "&c❌ Rất tiếc, bạn không nhận được phần thưởng nào từ hộp %{_box_name}%!" to player
+
+command /nearpos [<number>]:
+    permission: admin.near
+    description: Hiển thị vị trí của người chơi gần bạn trong bán kính (mặc định 50 block)
+    usage: /nearpos [bán_kính]
+    trigger:
+        set {_radius} to arg-1
+        if {_radius} is not set:
+            set {_radius} to 50
+        clear {_near::*}
+        loop all players:
+            if loop-player is not player:
+                if distance between player and loop-player <= {_radius}:
+                    add loop-player to {_near::*}
+        if size of {_near::*} is 0:
+            send "&cKhông có người chơi nào gần bạn trong bán kính %{_radius}% block." to player
+        else:
+            send "&aNgười chơi gần bạn trong bán kính %{_radius}% block:" to player
+            loop {_near::*}:
+                set {_loc} to location of loop-value
+                send "&7- %loop-value%: &eX: %x-coordinate of {_loc}% &eY: %y-coordinate of {_loc}% &eZ: %z-coordinate of {_loc}%" to player
+
+command /ganmoi:
+    trigger:
+        if player's tool is fishing rod:
+            make player execute command "emf applybaits"
+            send "&a§7[§bCâu Cá§7] §fcho mồi vào ô để gắn!"
+        else:
+            send title "§6§lThiếu Cần Câu" with subtitle "§ccầm cần câu lên để mở được ô mồi" for 5 seconds
+			
+command /trutien <offlineplayer> <number>:
+    permission: op
+    trigger:
+        if arg-2 < 0:
+            send "&cSố tiền phải lớn hơn 0."
+            stop
+        if balance of arg-1 < arg-2:
+            send "&cNgười chơi này không đủ tiền."
+            stop
+        remove arg-2 from balance of arg-1
+        send "&aĐã trừ %arg-2% tiền của %arg-1%!"

@@ -1,0 +1,34 @@
+on first join:
+    set {level.%player%} to 1
+
+on join:
+    if {level.%player%} is not set:
+        set {level.%player%} to 1
+
+command /nhiemvu coban:
+    trigger:
+        send "&aBạn đã nhận nhiệm vụ: &eGiết 5 con Zombie!"
+        set {nhiemvu.%player%} to true
+        set {kills.%player%} to 0
+
+        # Nếu chưa có cấp độ thì gán mặc định là 1
+        if {level.%player%} is not set:
+            set {level.%player%} to 1
+
+on death of zombie:
+    if attacker is a player:
+        if {nhiemvu.%attacker%} is true:
+            add 1 to {kills.%attacker%}
+            send "&eBạn đã giết %{kills.%attacker%}% / 5 Zombie." to attacker
+
+            if {kills.%attacker%} >= 5:
+                execute console command "eco give %attacker% 150"
+                send "&aChúc mừng! Bạn đã hoàn thành nhiệm vụ và nhận 150 tiền." to attacker
+
+                # Tăng cấp độ sau khi hoàn thành nhiệm vụ
+                add 1 to {level.%attacker%}
+                send "&6Cấp độ của bạn đã tăng lên: &e%{level.%attacker%}%!" to attacker
+                play sound "entity.player.levelup" with volume 1 and pitch 1 to attacker
+
+                delete {nhiemvu.%attacker%}
+                delete {kills.%attacker%}

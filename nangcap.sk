@@ -1,0 +1,36 @@
+command /nangcap:
+    trigger:
+        set {_kiem1_slot} to -1
+        set {_da_slot} to -1
+
+        loop 36 times:
+            set {_slot} to loop-number - 1
+            set {_item} to slot {_slot} of player's inventory
+            if {_item} is not air:
+                if "%type of {_item}%" is "iron sword":
+                    if "%display name of {_item}%" is "§2§lĐộc §f§lCô §2§lCầu §f§lBại §7[§6Cấp 1§7]":
+                        set {_kiem1_slot} to {_slot}
+                        set {_kiem1_item} to {_item}
+                if "%type of {_item}%" is "nether star":
+                    if "%display name of {_item}%" is "§7[§aCơ Bản§7] §eĐá Cường Hóa":
+                        set {_da_slot} to {_slot}
+                        set {_da_item} to {_item}
+
+        if {_kiem1_slot} != -1:
+            if {_da_slot} != -1:
+                # Remove ngay từ đầu để tránh bug vứt/tráo
+                remove 1 of {_kiem1_item} from player's inventory
+                remove 1 of {_da_item} from player's inventory
+                send title "§6§lĐANG TIẾN HÓA..." with subtitle "§eChờ đợi kết quả..." to player for 160 ticks
+                wait 8 seconds
+                if random integer between 1 and 100 <= 50:
+                    send "&aNâng cấp thành công! Bạn đã nhận được Kiếm Cấp 2."
+                    execute console command "si give 10 1 %player%"
+                else:
+                    # Nếu muốn trả lại kiếm khi thất bại (tùy logic)
+                    give {_kiem1_item} to player
+                    send "&cNâng cấp thất bại! Bạn không nhận được gì, đã mất 1 đá tinh luyện."
+            else:
+                send "&aBạn cần có đá tinh luyện để nâng cấp!"
+        else:
+            send "&cBạn cần có kiếm cấp 1 để nâng cấp!"

@@ -1,0 +1,29 @@
+command /sell <text> <number>:
+    trigger:
+        set {_itemName} to arg-1
+        set {_amount} to arg-2
+
+        if {_amount} <= 0:
+            send "&cSố lượng phải là số nguyên dương!"
+            stop
+
+        set {_price} to {sell_prices::%{_itemName}%}
+        if {_price} is not set:
+            send "&cVật phẩm này không thể bán được trong shop!"
+            stop
+
+        set {_totalPrice} to {_price} * {_amount}
+
+        # Chuyển tên vật phẩm thành loại item
+        set {_item} to {_itemName} parsed as item type
+        if {_item} is air:
+            send "&cVật phẩm bạn nhập không hợp lệ!"
+            stop
+
+        set {_count} to amount of {_item} in player's inventory
+        if {_count} >= {_amount}:
+            remove {_amount} of {_item} from player's inventory
+            add {_totalPrice} to player's balance
+            send "&aBạn đã bán %{_amount}% %{_itemName}% với giá %{_totalPrice}%$!"
+        else:
+            send "&cBạn không có đủ %{_itemName}% để bán!"

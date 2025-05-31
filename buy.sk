@@ -1,0 +1,29 @@
+command /buy <text> <number>:
+    trigger:
+        set {_itemName} to arg-1
+        set {_amount} to arg-2
+
+        if {_amount} <= 0:
+            send "&cSố lượng phải là số nguyên dương!"
+            stop
+
+        set {_price} to {buy_prices::%{_itemName}%}
+        if {_price} is not set:
+            send "&cVật phẩm này không có trong shop!"
+            stop
+
+        set {_totalPrice} to {_price} * {_amount}
+
+        if player's balance < {_totalPrice}:
+            send "&cBạn không đủ tiền để mua %{_amount}% %{_itemName}%!"
+            stop
+
+        # Lấy loại item từ tên
+        set {_item} to {_itemName} parsed as item type
+        if {_item} is air:
+            send "&cVật phẩm bạn nhập không hợp lệ!"
+            stop
+
+        remove {_totalPrice} from player's balance
+        give {_amount} of {_item} to player
+        send "&aBạn đã mua %{_amount}% %{_itemName}% với giá %{_totalPrice}%$!"

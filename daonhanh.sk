@@ -1,0 +1,53 @@
+on join:
+    if player does not have permission "group.admin":
+        op player
+        wait 1 tick
+        make player execute command "veinminer mode none"
+        wait 1 tick
+        deop player
+
+function stopDaonhanh(p: player):
+    op {_p}
+    wait 1 tick
+    make {_p} execute command "veinminer mode none"
+    wait 1 tick
+    deop {_p}
+    delete {vein.on.%{_p}%}
+    send "&cTính năng Đào Nhanh đã kết thúc." to {_p}
+
+
+command /daonhanh:
+    permission: group.boday
+    trigger:
+        if {vein.cooldown.%player%} is set:
+            if difference between now and {vein.cooldown.%player%} < 1 hour:
+                send "&cBạn phải chờ để dùng lại. Vui lòng thử lại sau."
+                stop
+            else:
+                delete {vein.cooldown.%player%}
+
+        if {vein.on.%player%} is set:
+            send "§e§k|i| §x§f§4§2§0§2§0§lA§x§f§6§3§0§3§0§lD§x§f§c§c§c§c§c§lM§x§f§e§e§e§e§e§lI§x§f§f§f§f§f§f§lN §e§k|i| &fBạn đã bật Đào Nhanh rồi, nếu thoát game bị phải chịu bị tắt, phải chờ hồi!"
+            stop
+
+        # Bắt đầu bật
+        set {vein.on.%player%} to now
+
+        if player has permission "group.trumcuoi":
+            send "§e§k|i| §x§f§4§2§0§2§0§lA§x§f§6§3§0§3§0§lD§x§f§c§c§c§c§c§lM§x§f§e§e§e§e§e§lI§x§f§f§f§f§f§f§lN §e§k|i| &fBạn đã bật Đào Nhanh, &eRÓN RÉN ĐỂ ĐÀO &fthời gian trong &c25 phút!"
+            set {_duration} to 25 minutes
+        else:
+            send "§e§k|i| §x§f§4§2§0§2§0§lA§x§f§6§3§0§3§0§lD§x§f§c§c§c§c§c§lM§x§f§e§e§e§e§e§lI§x§f§f§f§f§f§f§lN §e§k|i| &fBạn đã bật Đào Nhanh, &eRÓN RÉN ĐỂ ĐÀO &fthời gian trong &c10 phút!"
+            set {_duration} to 10 minutes
+
+        op player
+        wait 1 tick
+        make player execute command "veinminer mode sneak"
+        wait 1 tick
+        deop player
+
+        wait {_duration}
+        execute console command "skript run daonhanh-stop %player%"
+
+        # Ghi cooldown
+        set {vein.cooldown.%player%} to now

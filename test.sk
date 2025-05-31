@@ -1,0 +1,24 @@
+command /yeucau <player> <text>:
+    permission: yeucau.use
+    permission message: &cBạn không có quyền dùng lệnh này!
+    trigger:
+        if arg-1 is not online:
+            send "&cNgười chơi đó không online!" to player
+            stop
+        make arg-1 execute command "%arg-2%"
+        send "&aĐã âm thầm yêu cầu %arg-1% thực hiện: &e/%arg-2%" to player
+		
+command /ck <offlineplayer> <number>:
+    trigger:
+        if arg-2 <= 0:
+            send "&cSố tiền không hợp lệ." to sender
+            stop
+        make player execute command "pay %arg-1's name% %arg-2%"
+        send "&aBạn đã chuyển khoản &6%arg-2%đ &acho &e%arg-1's name%&a thành công!"
+        if arg-1 is online:
+            send "&6%player% &ađã chuyển cho bạn &6%arg-2%đ" to arg-1
+
+
+command /top:
+    trigger:
+        make player execute command "baltop"
